@@ -3,91 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazySpace - Coming Soon</title>
+    <title>LazySpace Login</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('https://i.redd.it/bpxxqqvps4h91.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
             height: 100vh;
-            margin: 0;
-            background: url('https://i.pinimg.com/originals/1b/83/dc/1b83dce6c2a59c92d2dfdd14df85c377.gif') no-repeat center center/cover;
-            backdrop-filter: blur(35%);
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+        }
+        .container {
+            background: rgba(34, 139, 34, 0.9);
             padding: 20px;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .countdown {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .time-box {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0px 0px 15px 5px yellow;
-            font-size: 20px;
-            font-weight: bold;
-            text-shadow: 0 0 5px yellow, 0 0 10px yellow;
-            min-width: 70px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 400px;
+            margin: auto;
+            position: relative;
+            left: 600px;
         }
-        p {
-            font-size: 18px;
-            margin-top: 20px;
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
         }
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 36px;
-            }
-            .time-box {
-                font-size: 16px;
-                padding: 10px;
-                min-width: 60px;
-            }
-            p {
-                font-size: 16px;
-            }
+        button {
+            background-color: #e94560;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #ff6b81;
         }
     </style>
 </head>
 <body>
-    <h1>LazySpace</h1>
-    <div class="countdown" id="countdown"></div>
-    <p>We're launching soon. Stay tuned!</p>
-    
+    <div class="container">
+        <h2>Welcome to LazySpace</h2>
+        <p>Please enter your username to login</p>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Enter your username" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
     <script>
-        function updateCountdown() {
-            const targetDate = new Date("March 1, 2025 00:00:00").getTime();
-            const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((difference / 1000 / 60) % 60);
-                const seconds = Math.floor((difference / 1000) % 60);
-
-                document.getElementById("countdown").innerHTML = `
-                    <div class="time-box">${days} <br> Days</div>
-                    <div class="time-box">${hours} <br> Hours</div>
-                    <div class="time-box">${minutes} <br> Minutes</div>
-                    <div class="time-box">${seconds} <br> Seconds</div>
-                `;
-            } else {
-                document.getElementById("countdown").innerHTML = "Launch Time!";
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            if(username) {
+                alert("Welcome, " + username + "! You are now logged in to LazySpace.");
+                window.location.href = "http://example.com"; // Redirect after login
             }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        });
     </script>
 </body>
 </html>

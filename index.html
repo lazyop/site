@@ -3,71 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazySpace Login</title>
+    <title>Simple Page</title>
+    <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f606.png" type="image/png">
     <style>
         body {
-            font-family: Arial, sans-serif;
             text-align: center;
-            background: url('https://i.redd.it/bpxxqqvps4h91.gif') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            margin: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-        }
-        .container {
-            background: rgba(34, 139, 34, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            width: 80%;
-            max-width: 400px;
-            margin: auto;
-            position: relative;
-            left: 600px;
-        }
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            background-color: #e94560;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+            background-size: 400% 400%;
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
+            animation: animateBackground 10s infinite ease-in-out;
+            cursor: url('https://img.icons8.com/stickers-duotone/32/middle-finger.png'), auto;
         }
-        button:hover {
-            background-color: #ff6b81;
+        
+        @keyframes animateBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .rainbow {
+            color: white;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
+        }
+        
+        .separator {
+            width: 80%;
+            height: 2px;
+            background-color: #f1c40f;
+            position: absolute;
+            bottom: 40px;
+        }
+        
+        footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #f1c40f;
+        }
+
+        .header-image {
+            width: 300px;
+            height: auto;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Welcome to LazySpace</h2>
-        <p>Please enter your username to login</p>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Enter your username" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const username = document.getElementById("username").value;
-            if(username) {
-                alert("Welcome, " + username + "! You are now logged in to LazySpace.");
-                window.location.href = "https://sliding.toys/"; // Redirect after login
+        document.addEventListener("DOMContentLoaded", function() {
+            function capitalizeFirstLetterOfEachWord(element) {
+                if (element.nodeType === 3) { // Text node
+                    element.nodeValue = element.nodeValue.replace(/\b\w/g, char => char.toUpperCase());
+                } else {
+                    element.childNodes.forEach(capitalizeFirstLetterOfEachWord);
+                }
             }
+            capitalizeFirstLetterOfEachWord(document.body);
         });
     </script>
+</head>
+<body>
+    <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/111.png" alt="Header Image" class="header-image">
+    <h1 class="rainbow">Good Morning</h1>
+    <pre>
+░░░░░░░░░░░█▀▀░░█░░░░░░░░ 
+░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░ 
+░░░░░░█░█░░░░░░░░░░▐░░░ 
+░░░░░░▐▐░░░░░░░░░▄░▐░░░ 
+░░░░░░█░░░░░░░░▄▀▀░▐░░░ 
+░░░░▄▀░░░░░░░░▐░▄▄▀░░░░ 
+░░▄▀░░░▐░░░░░█▄▀░▐░░░░░ 
+░░█░░░▐░░░░░░░░▄░█░░░░░ 
+░░░█▄░░▀▄░░░░▄▀▐░█░░░░░ 
+░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░ 
+░░▐█▐▄░░▀░░░░░░▐░█▄▄░░ 
+░░░▀▀░▄CHOCOOO▄░░░▐▄▄▄▀░░░
+</pre>
+    <div class="separator"></div>
+    <footer>This site is managed by NunuNarani 👉✊💦💦</footer>
 </body>
 </html>

@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NunuOP</title>
+    <title>Simple Page</title>
     <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f606.png" type="image/png">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
             background-size: 400% 400%;
             color: white;
-            font-size: 1rem;
+            font-size: 0.8rem;
             animation: animateBackground 10s infinite ease-in-out;
             cursor: url('https://img.icons8.com/stickers-duotone/32/middle-finger.png'), auto;
+            text-align: center;
         }
         
         @keyframes animateBackground {
@@ -27,32 +32,37 @@
             100% { background-position: 0% 50%; }
         }
         
-        .rainbow {
-            color: white;
-            -webkit-background-clip: initial;
-            -webkit-text-fill-color: initial;
+        .header-image {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+        }
+        
+        pre {
+            font-size: 1.2rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: center;
         }
         
         .separator {
             width: 80%;
             height: 2px;
             background-color: #f1c40f;
-            position: absolute;
-            bottom: 40px;
+            margin: 20px 0;
         }
         
         footer {
-            position: absolute;
-            bottom: 10px;
+            width: 100%;
             font-size: 1rem;
             font-family: Arial, sans-serif;
             font-weight: bold;
             color: #f1c40f;
-        }
-
-        .header-image {
-            width: 300px;
-            height: auto;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
         }
     </style>
     <script>
@@ -70,7 +80,7 @@
 </head>
 <body>
     <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/111.png" alt="Header Image" class="header-image">
-    <h1 class="rainbow">Sun be RANDI ke pille kutte ke chode madarchod teri MAA KE CHUT idhar girake tera pura KHANDAAN chod dunga bsdk. Teri DADI ko CHODKE JAWAN kar dunga, CHUTMARIKE tera baap ne kabhi dekha v ha computer gandu ke bacche
+    <h1>Sun be RANDI ke pille kutte ke chode madarchod teri MAA KE CHUT idhar girake tera pura KHANDAAN chod dunga bsdk. Teri DADI ko CHODKE JAWAN kar dunga, CHUTMARIKE tera baap ne kabhi dekha v ha computer gandu ke bacche
 RANDWE. apni MAA ko 101Rs ma BECHKE  game  parlour jata MADARCHOD. BEHEN ko madarchod 45rs mai de dia kisi KISAAN ko thokne ke lia, Teri MAA ke CHUT ma laden ka land. Teri MAA ke CHUT ma KABOOTAR ka ghosla bana dunga BETICHOD. 
 apni MAA ka CHUT chaat. jaane MADARCHOD yeha mat chilla RAND ke LUND.wapas mu khola na BIHARI ke bacche idhar samne JUNGLE ma teri biwi ko girake chod dunga. DEMO chaiye tho apne BEHEN se
 puchna kaise 9INCH ka LUND uske GAAND me ghused dia tha.. BC 4 din tak HUG nhi pai. chup rehna MADARCHOD KE AULAAD nehi to gb road pe nanga nachbauga tereko</h1>
@@ -87,7 +97,7 @@ puchna kaise 9INCH ka LUND uske GAAND me ghused dia tha.. BC 4 din tak HUG nhi p
 ░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░ 
 ░░▐█▐▄░░▀░░░░░░▐░█▄▄░░ 
 ░░░▀▀░▄CHOCOOO▄░░░▐▄▄▄▀░░░
-</pre>
+    </pre>
     <div class="separator"></div>
     <footer>This site is managed by NunuNarani 👉✊💦💦</footer>
 </body>

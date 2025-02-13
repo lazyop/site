@@ -3,100 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Page</title>
-    <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f606.png" type="image/png">
+    <title>Autoplay Video</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
+            margin: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
-            background-size: 400% 400%;
-            color: white;
-            font-size: 0.8rem;
-            animation: animateBackground 10s infinite ease-in-out;
-            cursor: url('https://img.icons8.com/stickers-duotone/32/middle-finger.png'), auto;
-            text-align: center;
+            height: 100vh;
+            background-color: black;
         }
-        
-        @keyframes animateBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .header-image {
-            width: 80%;
-            max-width: 300px;
-            height: auto;
-        }
-        
-        pre {
-            font-size: 1.2rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            text-align: center;
-        }
-        
-        .separator {
-            width: 80%;
-            height: 2px;
-            background-color: #f1c40f;
-            margin: 20px 0;
-        }
-        
-        footer {
-            width: 100%;
-            font-size: 1rem;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            color: #f1c40f;
-            text-align: center;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+        iframe {
+            width: 720px;
+            height: 1280px;
+            border: none;
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function capitalizeFirstLetterOfEachWord(element) {
-                if (element.nodeType === 3) { // Text node
-                    element.nodeValue = element.nodeValue.replace(/\b\w/g, char => char.toUpperCase());
-                } else {
-                    element.childNodes.forEach(capitalizeFirstLetterOfEachWord);
-                }
-            }
-            capitalizeFirstLetterOfEachWord(document.body);
-        });
-    </script>
 </head>
 <body>
-    <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/111.png" alt="Header Image" class="header-image">
-    <h1>Sun be RANDI ke pille kutte ke chode madarchod teri MAA KE CHUT idhar girake tera pura KHANDAAN chod dunga bsdk. Teri DADI ko CHODKE JAWAN kar dunga, CHUTMARIKE tera baap ne kabhi dekha v ha computer gandu ke bacche
-RANDWE. apni MAA ko 101Rs ma BECHKE  game  parlour jata MADARCHOD. BEHEN ko madarchod 45rs mai de dia kisi KISAAN ko thokne ke lia, Teri MAA ke CHUT ma laden ka land. Teri MAA ke CHUT ma KABOOTAR ka ghosla bana dunga BETICHOD. 
-apni MAA ka CHUT chaat. jaane MADARCHOD yeha mat chilla RAND ke LUND.wapas mu khola na BIHARI ke bacche idhar samne JUNGLE ma teri biwi ko girake chod dunga. DEMO chaiye tho apne BEHEN se
-puchna kaise 9INCH ka LUND uske GAAND me ghused dia tha.. BC 4 din tak HUG nhi pai. chup rehna MADARCHOD KE AULAAD nehi to gb road pe nanga nachbauga tereko</h1>
-    <pre>
-░░░░░░░░░░░█▀▀░░█░░░░░░░░ 
-░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░ 
-░░░░░░█░█░░░░░░░░░░▐░░░ 
-░░░░░░▐▐░░░░░░░░░▄░▐░░░ 
-░░░░░░█░░░░░░░░▄▀▀░▐░░░ 
-░░░░▄▀░░░░░░░░▐░▄▄▀░░░░ 
-░░▄▀░░░▐░░░░░█▄▀░▐░░░░░ 
-░░█░░░▐░░░░░░░░▄░█░░░░░ 
-░░░█▄░░▀▄░░░░▄▀▐░█░░░░░ 
-░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░ 
-░░▐█▐▄░░▀░░░░░░▐░█▄▄░░ 
-░░░▀▀░▄CHOCOOO▄░░░▐▄▄▄▀░░░
-    </pre>
-    <div class="separator"></div>
+    <iframe allow="fullscreen;autoplay" allowfullscreen height="1280" src="https://streamable.com/e/5drg7o?autoplay=1&muted=0" width="720" style="border:none;"></iframe>
+</body>
 </html>

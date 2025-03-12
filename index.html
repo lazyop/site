@@ -15,12 +15,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(135deg, #000a1f, #000000, #002b55);
             color: white;
             font-family: Arial, sans-serif;
             background-size: 400% 400%;
             animation: gradientBG 10s ease infinite;
+            overflow-y: auto;
+            padding: 20px;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -30,7 +32,7 @@
         .container {
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            padding: 50px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0px 0px 15px rgba(0, 162, 255, 0.5);
             width: auto;
@@ -48,7 +50,7 @@
         }
         @media (max-width: 768px) {
             .button-container {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         .button {

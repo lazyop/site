@@ -3,260 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet"> <!-- Add Arial font for P2 -->
+    <title>Movies and Shows</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Style Script', cursive;
-            color: white;
-            text-align: center;
-            background: linear-gradient(-45deg, #000000, #1a001a, #4b0082, #9400d3);
-            background-size: 400% 400%;
-            animation: gradientBG 6s ease infinite;
+            box-sizing: border-box;
+        }
+        body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative;
+            background: linear-gradient(135deg, #001f3f, #000000, #004c99);
+            color: white;
+            font-family: Arial, sans-serif;
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
         }
-
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100vh;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        #countdown {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ffcc00;
-            text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
-            margin-top: 20px;
-        }
-
-        .footer {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
             text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            font-size: 1rem;
-            font-family: Arial, sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(0, 162, 255, 0.5);
+            width: auto;
         }
-
-        /* Style for the Admin button */
-        .admin-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            border: none;
-            border-radius: 5px;
+        h1 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: #4da8da;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            justify-items: center;
+        }
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 12px;
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(0, 162, 255, 0.8);
+            transition: all 0.3s ease-in-out;
+            text-align: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 18px;
+            text-decoration: none;
             font-weight: bold;
+            height: 80px;
+            width: 180px;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            background: rgba(0, 162, 255, 0.4);
+            border-color: white;
+            box-shadow: 0px 0px 15px rgba(0, 162, 255, 1);
+        }
+        .button img {
+            width: 60px;
+            height: auto;
+            max-height: 40px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
         }
-
-        .admin-button:hover {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            transform: scale(1.1);
+        .button:nth-child(6) img {
+            width: 80px;
         }
-
-        /* Style for P2 form container */
-        .form-container {
-            background-color: rgba(0, 0, 0, 0.45); /* 45% black shade */
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            width: 300px;
-            display: none; /* Hide form initially */
-            text-align: left;
-            font-family: 'Arial', sans-serif; /* Change font for P2 */
-        }
-
-        /* Resize all input fields, select, and button */
-        .form-container input[type="text"], .form-container input[type="tel"], .form-container select, .form-container button {
-            width: 100%;
-            padding: 12px 15px; /* Increased padding for better spacing */
-            margin: 10px 0;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            box-sizing: border-box; /* Ensure padding is included in the width */
-        }
-
-        .form-container button {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .form-container button:hover {
-            background-color: #45a049;
-        }
-
-        .otp-input {
-            display: none; /* Hide OTP input by default */
-        }
-
-        .otp-sent-message {
-            font-size: 1.2rem;
-            color: #ffcc00;
-            margin: 10px 0;
-        }
-
-        .otp-error {
-            color: red;
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
         }
     </style>
 </head>
 <body>
-    <!-- Admin button at the top right corner -->
-    <button class="admin-button" onclick="showAdminPage()">Admin</button>
-
-    <!-- Coming Soon Page Content -->
-    <div class="container" id="indexPage">
-        <h1>Coming Soon</h1>
-        <div id="countdown"></div>
+    <div class="container">
+        <h1>Movies and Shows</h1>
+        <div class="button-container">
+            <a href="https://www.1shows.com/" class="button">
+                <img src="https://www.1shows.com/logo/1shows.png" alt="1Shows">
+            </a>
+            <a href="https://catflix.su/home" class="button">
+                <img src="https://static.wixstatic.com/media/6e03c9_23caf6c095114c4baaa51295cefdc40d~mv2.png" alt="Catflix">
+            </a>
+            <a href="https://www.vidbinge.com/" class="button">VidBinge</a>
+            <a href="https://cinemadeck.com/" class="button">
+                <img src="https://cinemadeck.com/logo/cinema-deck.png?w=256&q=75" alt="CinemaDeck">
+            </a>
+            <a href="https://www.cineby.app/" class="button">
+                <img src="http://cineby.app/logo.png" alt="CineBy">
+            </a>
+            <a href="https://www.popcornmovies.to/home" class="button">
+                <img src="https://www.popcornmovies.to/static/img/logo-1723617006.png" alt="PopcornMovies">
+            </a>
+            <a href="https://fmovies-hd.to/home/" class="button">
+                <img src="https://fmovies-hd.to/wp-content/uploads/2024/07/Fmovies-Favicon-150x150.png" alt="FMovies HD">
+            </a>
+            <a href="https://nepu.to/" class="button">
+                <img src="https://nepu.to/public/static/logo.png?v=3.0.0" alt="NePu">
+            </a>
+            <a href="https://www.cinebook.xyz/" class="button">
+                <img src="https://www.cinebook.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-white.00d35c63.png&w=256&q=75" alt="CineBook">
+            </a>
+            <a href="https://hexa.watch/" class="button">
+                <img src="https://hexa.watch/logo.png" alt="Hexa Watch">
+            </a>
+            <a href="https://bflix.sh/home/" class="button">
+                <img src="https://bflix.sh/images/logo.png?v=5" alt="BFlix">
+            </a>
+            <a href="https://xprime.tv/" class="button">
+                <img src="https://xprime.tv/logo.webp" alt="XPrime TV">
+            </a>
+        </div>
     </div>
-
-    <!-- P2 Form (hidden initially) -->
-    <div class="form-container" id="p2Page">
-        <h2>Admin Input</h2>
-        <form id="adminForm">
-            <div>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="gender">Gender</label>
-                <select id="gender" name="gender" required>
-                    <option value="Transgender">Transgender</option>
-                </select>
-            </div>
-
-            <!-- Mobile Number Input Field -->
-            <div>
-                <label for="mobile">Mobile Number (India)</label>
-                <input type="tel" id="mobile" name="mobile" pattern="^[0-9]{10}$" placeholder="Enter 10 digit mobile number" required>
-            </div>
-
-            <!-- OTP sent message -->
-            <div id="otpMessage" class="otp-sent-message"></div>
-
-            <!-- OTP Input Field (hidden initially) -->
-            <div id="otpInputContainer" class="otp-input">
-                <label for="otp">Enter OTP</label>
-                <input type="text" id="otp" name="otp" required>
-                <button type="button" onclick="verifyOtp()">Verify OTP</button>
-            </div>
-
-            <button type="button" id="sendOtpButton" onclick="sendOtp()">Send OTP</button>
-            <button type="submit" style="display:none" id="continueButton">Continue</button>
-        </form>
-    </div>
-
-    <div class="footer">Managed by Team NunuNarani | 2025</div>
-
-    <script>
-        function startCountdown(targetDate) {
-            const countdownElement = document.getElementById('countdown');
-            const targetTime = new Date(targetDate).getTime();
-            
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const timeLeft = targetTime - now;
-                
-                if (timeLeft <= 0) {
-                    countdownElement.innerHTML = "We're Live!";
-                    clearInterval(interval);
-                    return;
-                }
-                
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }
-            
-            updateCountdown();
-            const interval = setInterval(updateCountdown, 1000);
-        }
-        
-        startCountdown('February 28, 2025 00:00:00');
-
-        function showAdminPage() {
-            // Hide index page content
-            document.getElementById('indexPage').style.display = 'none';
-            
-            // Show the P2 page content
-            document.getElementById('p2Page').style.display = 'block';
-        }
-
-        function sendOtp() {
-            const mobile = document.getElementById('mobile').value;
-
-            if (mobile && mobile.match(/^[0-9]{10}$/)) {
-                document.getElementById('otpMessage').innerText = "OTP has been sent to your mobile number.";
-                document.getElementById('otpInputContainer').style.display = 'block';
-                document.getElementById('sendOtpButton').style.display = 'none';
-                document.getElementById('continueButton').style.display = 'block';
-            } else {
-                alert("Please enter a valid 10-digit mobile number.");
-            }
-        }
-
-        function verifyOtp() {
-            const otp = document.getElementById('otp').value;
-
-            // Simulate OTP verification (in real scenarios, verify with server)
-            if (otp === "123456") {
-                alert("OTP verified successfully!");
-                // Show continue button after OTP verification
-            } else {
-                alert("Invalid OTP. Please try again.");
-            }
-        }
-
-        document.getElementById('adminForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const gender = document.getElementById('gender').value;
-            
-            if(name && gender) {
-                alert(`Name: ${name}, Gender: ${gender}`);
-                // Additional actions can be done here like sending the data or redirecting.
-            } else {
-                alert('Please fill out all fields.');
-            }
-        });
-    </script>
+    <div class="footer">Coded with ❤️ by LAZYBOI</div>
 </body>
 </html>

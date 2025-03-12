@@ -16,7 +16,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #001f3f, #000000, #004c99);
+            background: linear-gradient(135deg, #000a1f, #000000, #002b55);
             color: white;
             font-family: Arial, sans-serif;
             background-size: 400% 400%;
@@ -46,6 +46,11 @@
             gap: 15px;
             justify-items: center;
         }
+        @media (max-width: 768px) {
+            .button-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
         .button {
             display: flex;
             justify-content: center;
@@ -62,7 +67,7 @@
             text-decoration: none;
             font-weight: bold;
             height: 80px;
-            width: 180px;
+            width: 160px;
         }
         .button:hover {
             transform: scale(1.05);
@@ -71,16 +76,13 @@
             box-shadow: 0px 0px 15px rgba(0, 162, 255, 1);
         }
         .button img {
-            width: 60px;
+            width: 50px;
             height: auto;
-            max-height: 40px;
+            max-height: 35px;
             cursor: pointer;
             display: block;
             border-radius: 10px;
             object-fit: contain;
-        }
-        .button:nth-child(6) img {
-            width: 80px;
         }
         .footer {
             margin-top: 20px;

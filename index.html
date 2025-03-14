@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover top movie streaming sites with easy access.">
     <title>Lazy</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/android-chrome-512x512.png">
     <style>
@@ -17,41 +18,60 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #000a1f, #000000, #002b55);
+            background: url('https://raw.githubusercontent.com/lazyop/site/refs/heads/main/bg.png') no-repeat center center fixed;
+            background-size: cover;
             color: white;
             font-family: Arial, sans-serif;
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
             overflow-y: auto;
             padding: 20px;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 55px;
+            border-radius: 20px;
             box-shadow: 0px 0px 15px rgba(0, 162, 255, 0.5);
             width: auto;
+            transition: all 0.3s ease-in-out;
+			margin-bottom: 50px; /* Increased gap between containers */
         }
-        h1 {
+        .container:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 0px 20px rgba(0, 162, 255, 0.8);
+        }
+        .ribbon {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(128, 0, 128, 0.5), rgba(0, 0, 255, 0.5));
+            color: white;
+            padding: 10px 30px;
             font-size: 26px;
-            margin-bottom: 25px;
-            color: #4da8da;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0, 162, 255, 1);
+			top: -20px;
         }
         .button-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 30px;
             justify-items: center;
+            padding: 15px;
+            border-radius: 12px;
         }
         @media (max-width: 768px) {
             .button-container {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .button {
+                width: 120px;
+                height: 60px;
+                font-size: 14px;
+            }
+            .button img {
+                max-height: 60px;
             }
         }
         .button {
@@ -59,14 +79,14 @@
             justify-content: center;
             align-items: center;
             padding: 10px;
-            border-radius: 12px;
+            border-radius: 16px;
             backdrop-filter: blur(15px);
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(0, 162, 255, 0.8);
             transition: all 0.3s ease-in-out;
             text-align: center;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             text-decoration: none;
             font-weight: bold;
             height: 80px;
@@ -79,13 +99,14 @@
             box-shadow: 0px 0px 15px rgba(0, 162, 255, 1);
         }
         .button img {
-            width: 50px;
+            width: 90px;
             height: auto;
-            max-height: 35px;
+            max-height: 50px;
             cursor: pointer;
             display: block;
-            border-radius: 10px;
+            border-radius: 0px;
             object-fit: contain;
+            loading: lazy;
         }
         .footer {
             margin-top: 20px;
@@ -95,45 +116,49 @@
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Movies and Shows</h1>
+        <h1 class="ribbon">Movies and Shows</h1>
         <div class="button-container">
-            <a href="https://www.1shows.com/" class="button">
-                <img src="https://www.1shows.com/logo/1shows.png" alt="1Shows">
-            </a>
-            <a href="https://catflix.su/home" class="button">
-                <img src="https://static.wixstatic.com/media/6e03c9_23caf6c095114c4baaa51295cefdc40d~mv2.png" alt="Catflix">
-            </a>
-            <a href="https://www.vidbinge.com/" class="button">VidBinge</a>
-            <a href="https://cinemadeck.com/" class="button">
-                <img src="https://cinemadeck.com/logo/cinema-deck.png?w=256&q=75" alt="CinemaDeck">
-            </a>
-            <a href="https://www.cineby.app/" class="button">
-                <img src="http://cineby.app/logo.png" alt="CineBy">
-            </a>
-            <a href="https://www.popcornmovies.to/home" class="button">
-                <img src="https://www.popcornmovies.to/static/img/logo-1723617006.png" alt="PopcornMovies">
-            </a>
-            <a href="https://fmovies-hd.to/home/" class="button">
-                <img src="https://fmovies-hd.to/wp-content/uploads/2024/07/Fmovies-Favicon-150x150.png" alt="FMovies HD">
-            </a>
-            <a href="https://nepu.to/" class="button">
-                <img src="https://nepu.to/public/static/logo.png?v=3.0.0" alt="NePu">
-            </a>
-            <a href="https://www.cinebook.xyz/" class="button">
-                <img src="https://www.cinebook.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-white.00d35c63.png&w=256&q=75" alt="CineBook">
-            </a>
-            <a href="https://hexa.watch/" class="button">
-                <img src="https://hexa.watch/logo.png" alt="Hexa Watch">
-            </a>
-            <a href="https://bflix.sh/home/" class="button">
-                <img src="https://bflix.sh/images/logo.png?v=5" alt="BFlix">
-            </a>
-            <a href="https://xprime.tv/" class="button">
-                <img src="https://xprime.tv/logo.webp" alt="XPrime TV">
-            </a>
+           <a href="https://www.1shows.com/" class="button" target="_blank"><img src="https://www.1shows.com/logo/1shows.png" alt="1Shows"></a>
+            <a href="https://catflix.su/home" class="button" target="_blank"><img src="https://static.wixstatic.com/media/6e03c9_23caf6c095114c4baaa51295cefdc40d~mv2.png" alt="Catflix"></a>
+            <a href="https://www.vidbinge.com/" class="button" target="_blank">VidBinge</a>
+            <a href="https://cinemadeck.com/" class="button" target="_blank"><img src="https://cinemadeck.com/logo/cinema-deck.png?w=256&q=75" alt="CinemaDeck"></a>
+            <a href="https://www.cineby.app/" class="button" target="_blank"><img src="http://cineby.app/logo.png" alt="CineBy"></a>
+            <a href="https://www.popcornmovies.to/home" class="button" target="_blank"><img src="https://www.popcornmovies.to/static/img/logo-1723617006.png" alt="PopcornMovies"></a>
+            <a href="https://fmovies-hd.to/home/" class="button" target="_blank"><img src="https://fmovies-hd.to/wp-content/uploads/2024/07/Fmovies-Favicon-150x150.png" alt="FMovies HD"></a>
+            <a href="https://nepu.to/" class="button" target="_blank"><img src="https://nepu.to/public/static/logo.png?v=3.0.0" alt="NePu"></a>
+            <a href="https://www.cinebook.xyz/" class="button" target="_blank"><img src="https://www.cinebook.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-white.00d35c63.png&w=256&q=75" alt="CineBook"></a>
+            <a href="https://hexa.watch/" class="button" target="_blank"><img src="https://hexa.watch/logo.png" alt="Hexa Watch"></a>
+            <a href="https://bflix.sh/home/" class="button" target="_blank"><img src="https://bflix.sh/images/logo.png?v=5" alt="BFlix"></a>
+            <a href="https://xprime.tv/" class="button" target="_blank"><img src="https://xprime.tv/logo.webp" alt="XPrime TV"></a>
+			<a href="https://vegamovies.al/" class="button" target="_blank"><img src="https://vegamovies.al/templates/vegamovies/images/vegav2.png" alt="CineBook"></a>
+            <a href="https://broflix.ci/" class="button" target="_blank"><img src="https://broflix.ci/icon?f56d1bfaf5d3d51d" alt="Hexa Watch"></a>
+            <a href="https://pstream.org/" class="button" target="_blank"><img src="https://pstream.org/android-chrome-192x192.png" alt="BFlix"></a>
+            <a href="https://watch.streamflix.one/" class="button" target="_blank"><img src="https://watch.streamflix.one/favicon.png" alt="XPrime TV"></a>
         </div>
     </div>
-    <div class="footer">Coded with ❤️ by LAZYBOI</div>
+
+	<div class="container">
+        <h1 class="ribbon">Anime</h1>
+        <div class="button-container">
+           <a href="https://www.miruro.online/" class="button" target="_blank"><img src="https://www.miruro.online/assets/miruro-text-transparent-white-DRs0RmF1.png" alt="Miruro"></a>
+            <a href="https://hianime.to/home" class="button" target="_blank"><img src="https://hianime.to/images/logo.png?v=0.1" alt="Catflix"></a>
+            <a href="https://animag.to/" class="button" target="_blank"><img src="https://animag.to/favicon.ico" alt="CinemaDeck"></a>
+            <a href="https://4anime.gg/home" class="button" target="_blank"><img src="https://4anime.gg/images/logo.png" alt="CinemaDeck"></a>
+            <a href="https://aniplaynow.live/" class="button" target="_blank"><img src="https://aniplaynow.live/logo.svg" alt="CineBy"></a>
+            <a href="https://animekai.to/home" class="button" target="_blank"><img src="https://animekai.to/assets/uploads/37585a39fe8c8d8fafaa2c7bfbf5374ecac859ea6a0886b7dc.png" alt="PopcornMovies"></a>
+            <a href="https://kaa.mx/anime" class="button" target="_blank"><img src="https://kaa.mx/img/logo.png" alt="FMovies HD"></a>
+            <a href="https://aniwatchtv.to/home" class="button" target="_blank"><img src="https://aniwatchtv.to/images/logo.png" alt="NePu"></a>
+            <a href="https://watch.hikaritv.xyz/" class="button" target="_blank"><img src="https://watch.hikaritv.xyz/assest/images/logo.png" alt="CineBook"></a>
+            <a href="https://animez.org/" class="button" target="_blank"><img src="https://animez.org/upload/logos/2024/03/logo_1710148637_65eecc1d2584c.png" alt="Hexa Watch"></a>
+            <a href="https://www.animerealms.org/" class="button" target="_blank"><img src="https://www.animerealms.org/traced-logo.png" alt="BFlix"></a>
+            <a href="https://animeowl.me/home" class="button" target="_blank"><img src="https://animeowl.me/assets/owl-logo-white-long.webp" alt="XPrime TV"></a>
+        </div>
+		
+    </div>
+	<div class="footer">Disclosure: I do not own or host any of the content from these sites. This page simply provides links. None of the content is hosted or contained on this page; it serves purely as a text-based reference.</div>
+	<div class="footer">-----------------------------------------------------------------------------------------------------</div>
+    <div class="footer">Made with ❤️ by LAZYBOI</div>
 </body>
 </html>

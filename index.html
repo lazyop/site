@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base64 Encoder & Decoder</title>
+    <title>Base64 Encoder, Decoder & QR Scanner</title>
     <link rel="icon" href="https://web.dev/static/articles/building/an-adaptive-favicon/image/example-light-theme-favic-d92b9def036e6.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,7 +23,7 @@
         }
         .container {
             width: 90%;
-            max-width: 500px;
+            max-width: 400px;
             padding: 20px;
             border: 2px solid #00bfff;
             border-radius: 10px;
@@ -38,8 +40,8 @@
             font-weight: bold;
         }
         textarea {
-            width: 90%;
-            height: 100px;
+            width: 80%;
+            height: 80px;
             margin-bottom: 10px;
             background-color: #333;
             color: #ffffff;
@@ -51,6 +53,8 @@
             resize: none;
         }
         button {
+            width: 150px;
+            height: 50px;
             padding: 12px 24px;
             margin: 10px;
             cursor: pointer;
@@ -58,7 +62,7 @@
             color: #ffffff;
             border: 2px solid #002699;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
             transition: all 0.3s ease-in-out;
         }
@@ -70,9 +74,11 @@
 </head>
 <body>
     <div id="mainMenu" class="container">
-        <h2>Base64 Encoder & Decoder</h2>
+        <h2>Base64 Encoder, Decoder & QR Scanner</h2>
         <button onclick="showPage('encodeSection')">Encode</button>
         <button onclick="showPage('decodeSection')">Decode</button>
+        <button onclick="showPage('qrSection')">QR Scan</button>
+        <button onclick="showPage('qrCreateSection')">QR Create</button>
     </div>
     
     <div id="encodeSection" class="container" style="display: none;">
@@ -91,16 +97,33 @@
         <button onclick="goBack()">Back</button>
     </div>
     
+    <div id="qrSection" class="container" style="display: none;">
+        <h3>QR Code Scanner</h3>
+        <input type="file" id="qrInput" accept="image/*">
+        <button onclick="scanQR()">Reveal</button>
+        <textarea id="qrOutput" readonly placeholder="QR Code result..."></textarea>
+        <button onclick="goBack()">Back</button>
+    </div>
+
+    <div id="qrCreateSection" class="container" style="display: none;">
+        <h3>Generate QR Code</h3>
+        <textarea id="qrText" placeholder="Enter text..."></textarea>
+        <button onclick="generateQR()">Generate</button>
+        <div id="qrCode"></div>
+        <button id="downloadQR" style="display: none;" onclick="downloadQRImage()">Download QR</button>
+        <button onclick="goBack()">Back</button>
+    </div>
+    
     <script>
         function showPage(section) {
             document.getElementById('mainMenu').style.display = 'none';
+            document.querySelectorAll('.container').forEach(el => el.style.display = 'none');
             document.getElementById(section).style.display = 'flex';
         }
         
         function goBack() {
             document.getElementById('mainMenu').style.display = 'flex';
-            document.getElementById('encodeSection').style.display = 'none';
-            document.getElementById('decodeSection').style.display = 'none';
+            document.querySelectorAll('.container').forEach(el => el.style.display = 'none');
         }
         
         function encodeText() {
@@ -117,6 +140,28 @@
             } catch (e) {
                 alert("Invalid Base64 format!");
             }
+        }
+        
+        function generateQR() {
+            let qrText = document.getElementById('qrText').value;
+            let qrDiv = document.getElementById('qrCode');
+            qrDiv.innerHTML = "";
+            let qr = new QRCode(qrDiv, {
+                text: qrText,
+                width: 256,
+                height: 256,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            document.getElementById('downloadQR').style.display = 'block';
+        }
+        
+        function downloadQRImage() {
+            let qrCanvas = document.querySelector('#qrCode canvas');
+            let qrImage = qrCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            let link = document.createElement('a');
+            link.href = qrImage;
+            link.download = "qrcode_hd.png";
+            link.click();
         }
     </script>
 </body>

@@ -7,6 +7,7 @@
     <link rel="icon" href="https://web.dev/static/articles/building/an-adaptive-favicon/image/example-light-theme-favic-d92b9def036e6.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
     <style>
+        /* Dark Theme (Default) */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -17,8 +18,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             padding: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .container {
             width: 90%;
@@ -33,13 +35,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
-        h2, h3 {
-            font-size: 24px;
-            font-weight: bold;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         textarea {
-            width: 70%;
+            width: 100%;
             height: 80px;
             margin-bottom: 10px;
             background-color: #333;
@@ -50,6 +49,7 @@
             font-size: 16px;
             font-weight: bold;
             resize: none;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
         button {
             width: 150px;
@@ -69,41 +69,164 @@
             background-color: #002699;
             box-shadow: 0px 0px 12px rgba(0, 51, 204, 0.9);
         }
+        .copy-button {
+            width: 37%;
+            margin-top: 10px;
+            background-color: #adff2f;
+            color: #000000;
+            border: 2px solid #9acd32;
+            transition: all 0.3s ease-in-out;
+        }
+        .copy-button:hover {
+            background-color: #9acd32;
+            box-shadow: 0px 0px 12px rgba(154, 205, 50, 0.9);
+        }
+
+        /* Light Theme */
+        body.light-theme {
+            background-color: #f5f5f5;
+            color: #000000;
+        }
+        body.light-theme .container {
+            background-color: #ffffff;
+            border-color: #007bff;
+            box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.6);
+        }
+        body.light-theme textarea {
+            background-color: #e9ecef;
+            color: #000000;
+            border-color: #007bff;
+        }
+        body.light-theme button {
+            background-color: #007bff;
+            border-color: #0056b3;
+        }
+        body.light-theme button:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 0px 12px rgba(0, 123, 255, 0.9);
+        }
+        body.light-theme .copy-button {
+            background-color: #ffc107;
+            border-color: #e0a800;
+        }
+        body.light-theme .copy-button:hover {
+            background-color: #e0a800;
+            box-shadow: 0px 0px 12px rgba(255, 193, 7, 0.9);
+        }
+
+        /* Theme Toggle Container */
+        .theme-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #0033cc;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background-color: #002699;
+        }
+        body.light-theme .theme-toggle {
+            background-color: #007bff;
+        }
+        body.light-theme .theme-toggle:hover {
+            background-color: #0056b3;
+        }
+        .theme-text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            h2, h3 {
+                font-size: 20px;
+            }
+            textarea {
+                font-size: 14px;
+            }
+            button {
+                width: 100%;
+                font-size: 16px;
+            }
+            .theme-container {
+                top: 10px;
+                right: 10px;
+            }
+            .theme-text {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Theme Toggle Container -->
+    <div class="theme-container">
+        <span class="theme-text">Dark Mode</span>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    </div>
+
     <div id="mainMenu" class="container">
-        <h2>Converter</h2>
+        <h2> Tools </h2>
         <button onclick="showPage('encodeSection')">Encode</button>
         <button onclick="showPage('decodeSection')">Decode</button>
         <button onclick="showPage('qrSection')">QR Scan</button>
     </div>
     
     <div id="encodeSection" class="container" style="display: none;">
-        <h3>Encode Text to Base64</h3>
-        <textarea id="textToEncode" placeholder="Enter text..."></textarea>
+        <h3>Code Generator</h3>
+        <textarea id="textToEncode" placeholder="Enter text..." aria-label="Text to Encode"></textarea>
         <button onclick="encodeText()">Convert</button>
-        <textarea id="encodedText" readonly placeholder="Base64 result..."></textarea>
+        <textarea id="encodedText" readonly placeholder="Base64 result..." aria-label="Encoded Text"></textarea>
+        <button class="copy-button" onclick="copyToClipboard('encodedText')">Copy</button>
         <button onclick="goBack()">Back</button>
     </div>
     
     <div id="decodeSection" class="container" style="display: none;">
-        <h3>Decode Base64 to Text</h3>
-        <textarea id="textToDecode" placeholder="Enter Base64 code..."></textarea>
+        <h3>Text Extractor</h3>
+        <textarea id="textToDecode" placeholder="Enter Base64 code..." aria-label="Text to Decode"></textarea>
         <button onclick="decodeText()">Convert</button>
-        <textarea id="decodedText" readonly placeholder="Decoded text..."></textarea>
+        <textarea id="decodedText" readonly placeholder="Decoded text..." aria-label="Decoded Text"></textarea>
+        <button class="copy-button" onclick="copyToClipboard('decodedText')">Copy</button>
         <button onclick="goBack()">Back</button>
     </div>
     
     <div id="qrSection" class="container" style="display: none;">
         <h3>QR Code Scanner</h3>
-        <input type="file" id="qrInput" accept="image/*">
+        <input type="file" id="qrInput" accept="image/*" aria-label="Upload QR Code Image">
         <button onclick="scanQR()">Reveal</button>
-        <textarea id="qrOutput" readonly placeholder="QR Code result..."></textarea>
+        <textarea id="qrOutput" readonly placeholder="QR Code result..." aria-label="QR Code Result"></textarea>
+        <button class="copy-button" onclick="copyToClipboard('qrOutput')">Copy</button>
         <button onclick="goBack()">Back</button>
     </div>
     
     <script>
+        // Theme Toggle Function
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.querySelector('.theme-text');
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Navigation Functions
         function showPage(section) {
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById(section).style.display = 'flex';
@@ -115,28 +238,43 @@
             document.getElementById('decodeSection').style.display = 'none';
             document.getElementById('qrSection').style.display = 'none';
         }
-        
+
+        // Base64 Encoding
         function encodeText() {
-            let text = document.getElementById('textToEncode').value;
-            let encoded = btoa(text);
-            document.getElementById('encodedText').value = encoded;
-        }
-        
-        function decodeText() {
-            let encodedText = document.getElementById('textToDecode').value;
+            const text = document.getElementById('textToEncode').value.trim();
+            if (!text) {
+                alert('Please enter text to encode.');
+                return;
+            }
             try {
-                let decoded = atob(encodedText);
-                document.getElementById('decodedText').value = decoded;
+                const encoded = btoa(text);
+                document.getElementById('encodedText').value = encoded;
             } catch (e) {
-                alert("Invalid Base64 format!");
+                alert('Error encoding text. Please try again.');
             }
         }
-        
+
+        // Base64 Decoding
+        function decodeText() {
+            const encodedText = document.getElementById('textToDecode').value.trim();
+            if (!encodedText) {
+                alert('Please enter Base64 code to decode.');
+                return;
+            }
+            try {
+                const decoded = atob(encodedText);
+                document.getElementById('decodedText').value = decoded;
+            } catch (e) {
+                alert('Invalid Base64 format!');
+            }
+        }
+
+        // QR Code Scanning
         function scanQR() {
             const fileInput = document.getElementById('qrInput');
             const qrOutput = document.getElementById('qrOutput');
             if (fileInput.files.length === 0) {
-                alert('Please select an image file');
+                alert('Please select an image file.');
                 return;
             }
             const file = fileInput.files[0];
@@ -160,6 +298,14 @@
                 };
             };
             reader.readAsDataURL(file);
+        }
+
+        // Copy to Clipboard
+        function copyToClipboard(elementId) {
+            const textarea = document.getElementById(elementId);
+            textarea.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
         }
     </script>
 </body>

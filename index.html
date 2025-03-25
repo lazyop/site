@@ -105,6 +105,22 @@
         .bill-content {
             margin-top: 8px;
             font-size: 14px;
+            text-align: left;
+        }
+        .tenant-info {
+            margin-bottom: 10px;
+        }
+        .tenant-info p {
+            margin: 4px 0;
+            text-align: left;
+        }
+        .date-month-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .date-month-container p {
+            margin: 4px 0;
         }
         .bill-table {
             width: 100%;
@@ -122,6 +138,7 @@
         .bill-table td {
             padding: 6px;
             border-bottom: 1px solid #e0e0e0;
+            text-align: center; /* Center align all table cells */
         }
         .bill-table tr:nth-child(even) {
             background-color: #f8f9fa;
@@ -162,6 +179,7 @@
             margin-top: 12px;
             padding-top: 8px;
             border-top: 1px dashed #cccccc;
+            text-align: left;
         }
     </style>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -169,7 +187,8 @@
 <body>
     <div class="container" id="formContainer">
         <h2>Generate Rent Bill</h2>
-        <input type="text" id="user" placeholder="Enter Name" required>
+        <input type="text" id="user" placeholder="Enter Tenant Name" required>
+        <input type="tel" id="phone" placeholder="Enter Tenant Phone Number" required>
         <input type="date" id="date" required>
         <input type="number" id="houseRent" placeholder="Enter House Rent" required>
         <input type="number" id="lastMeter" placeholder="Last Month Meter Reading" required>
@@ -194,9 +213,15 @@
     <div class="bill-container" id="bill">
         <div class="bill-header">Rent Bill Receipt</div>
         <div class="bill-content">
-            <p><strong>Tenant Name:</strong> <span id="bill-user" style="color: #4a6baf;"></span></p>
-            <p><strong>Date:</strong> <span id="bill-date"></span> <strong>Month:</strong> <span id="bill-month" style="color: #4a6baf;"></span></p>
-            <hr style="border-top: 1px dashed #cccccc; margin: 8px 0;">
+            <div class="tenant-info">
+                <p><strong>Tenant Name:</strong> <span id="bill-user" style="color: #4a6baf;"></span></p>
+                <p><strong>Phone:</strong> <span id="bill-phone" style="color: #4a6baf;"></span></p>
+            </div>
+            <div class="date-month-container">
+                <p><strong>Date:</strong> <span id="bill-date"></span></p>
+                <p><strong>Month:</strong> <span id="bill-month" style="color: #4a6baf;"></span></p>
+            </div>
+            <hr style="border-top: 1px dashed #cccccc; margin: 10px 0;">
             <table class="bill-table">
                 <tr>
                     <th>Particular</th>
@@ -243,6 +268,7 @@
 
         function generateBill() {
             let user = document.getElementById('user').value;
+            let phone = document.getElementById('phone').value;
             let date = document.getElementById('date').value;
             let houseRent = parseFloat(document.getElementById('houseRent').value) || 0;
             let lastMeter = parseFloat(document.getElementById('lastMeter').value) || 0;
@@ -255,9 +281,10 @@
             let paymentType = document.getElementById('paymentType').value;
             let paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
             
-            if (user && date && (houseRent || electricBill) && paymentMethod) {
+            if (user && phone && date && (houseRent || electricBill) && paymentMethod) {
                 let billDate = new Date(date);
                 document.getElementById('bill-user').innerText = user;
+                document.getElementById('bill-phone').innerText = phone;
                 document.getElementById('bill-date').innerText = billDate.toLocaleDateString();
                 document.getElementById('bill-month').innerText = billDate.toLocaleString('default', { month: 'long' });
                 document.getElementById('bill-houseRent').innerText = formatIndianCurrency(houseRent);
@@ -299,6 +326,7 @@
             document.getElementById('newBillButton').style.display = 'none';
             
             document.getElementById('user').value = '';
+            document.getElementById('phone').value = '';
             document.getElementById('date').value = '';
             document.getElementById('houseRent').value = '';
             document.getElementById('lastMeter').value = '';

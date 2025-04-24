@@ -1,369 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Rent Bill Generator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            background: #121212;
-            color: #e0e0e0;
-            min-height: 100vh;
-            margin: 0;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            width: 90%;
-            max-width: 320px;
-            margin: 10px auto;
-            padding: 15px;
-            background: #1e1e1e;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-        h2 {
-            color: #6a8fd8;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        input, select {
-            display: block;
-            width: 90%;
-            margin: 10px auto;
-            padding: 10px;
-            border: 2px solid #333;
-            border-radius: 8px;
-            font-size: 14px;
-            text-align: center;
-            transition: all 0.3s;
-            background: #2d2d2d;
-            color: #e0e0e0;
-        }
-        input:focus, select:focus {
-            border-color: #6a8fd8;
-            outline: none;
-            box-shadow: 0 0 5px rgba(106, 143, 216, 0.5);
-        }
-        button {
-            background: linear-gradient(to right, #4a6baf, #6a8fd8);
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 8px 5px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            width: 90%;
-        }
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-        }
-        #downloadButton {
-            background: linear-gradient(to right, #4CAF50, #66BB6A);
-        }
-        #newBillButton {
-            background: linear-gradient(to right, #FF7043, #FF8A65);
-        }
-        #generateButton {
-            margin: 15px auto;
-        }
-        #downloadButton, #newBillButton {
-            display: none;
-            width: auto;
-        }
-        .bill-container {
-            width: 90%;
-            max-width: 4in;
-            background: #ffffff;
-            border-radius: 12px;
-            margin: 15px auto;
-            padding: 12px;
-            display: none;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid #e0e0e0;
-            color: #333333;
-        }
-        .bill-header {
-            font-size: 18px;
-            font-weight: bold;
-            color: #4a6baf;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
-            border-bottom: 2px dashed #cccccc;
-        }
-        .bill-content {
-            margin-top: 8px;
-            font-size: 14px;
-            text-align: left;
-        }
-        .tenant-info {
-            margin-bottom: 10px;
-        }
-        .tenant-info p {
-            margin: 4px 0;
-            text-align: left;
-        }
-        .date-month-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        .date-month-container p {
-            margin: 4px 0;
-        }
-        .bill-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 12px;
-            font-size: 14px;
-        }
-        .bill-table th {
-            background-color: #4a6baf;
-            color: white;
-            padding: 6px;
-            text-align: center;
-        }
-        .bill-table td {
-            padding: 6px;
-            border-bottom: 1px solid #e0e0e0;
-            text-align: center; /* Center align all table cells */
-        }
-        .bill-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        .bill-table tr:last-child td {
-            border-bottom: none;
-        }
-        .extra-row {
-            height: 15px;
-        }
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            margin-top: 12px;
-            width: 90%;
-            max-width: 320px;
-        }
-        @media (min-width: 400px) {
-            .button-container {
-                flex-direction: row;
-                justify-content: center;
-            }
-            #downloadButton, #newBillButton {
-                width: auto;
-            }
-        }
-        .outstanding {
-            color: #d32f2f !important;
-            font-weight: bold !important;
-        }
-        .advance {
-            color: #388e3c !important;
-            font-weight: bold !important;
-        }
-        .payment-method {
-            margin-top: 12px;
-            padding-top: 8px;
-            border-top: 1px dashed #cccccc;
-            text-align: left;
-        }
-    </style>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D3ePray Links</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #2f2f44);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 25px;
+      color: #ffffff;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .social-buttons a {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ff6ec4, #7873f5);
+      color: #ffffff;
+      font-size: 1.6em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .social-buttons a:hover {
+      transform: translateY(-6px) scale(1.1);
+      background: linear-gradient(145deg, #f83600, #f9d423);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    }
+
+    .footer {
+      font-size: 0.9em;
+      color: #cccccc;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container" id="formContainer">
-        <h2>Generate Rent Bill</h2>
-        <input type="text" id="user" placeholder="Enter Tenant Name" required>
-        <input type="tel" id="phone" placeholder="Enter Tenant Phone Number" required>
-        <input type="date" id="date" required>
-        <input type="number" id="houseRent" placeholder="Enter House Rent" required>
-        <input type="number" id="lastMeter" placeholder="Last Month Meter Reading" required>
-        <input type="number" id="currentMeter" placeholder="Current Month Meter Reading" required>
-        
-        <select id="paymentType">
-            <option value="None">Select Payment Type</option>
-            <option value="Advance">Advance</option>
-            <option value="Outstanding">Outstanding</option>
-        </select>
-        <input type="number" id="paymentAmount" placeholder="Enter Amount" required>
-        
-        <select id="paymentMethod" required>
-            <option value="">Select Payment Method</option>
-            <option value="Cash">Cash</option>
-            <option value="UPI">UPI</option>
-        </select>
-        
-        <button onclick="generateBill()" id="generateButton">Generate Bill</button>
+
+  <div class="container">
+    <img
+      src="https://cdn5.cdn-telegram.org/file/LE2XEnYODi9_JczsAmyLurOPZra2E0xYOHIT5tzzRuhktWKr9nDfoplOYl23N9VV-Fo1Y1ICdhTY38NFx5K3ivhvbLfpmlEjBBcVmIcEjQcvaqLvg75YumYUlLugWueUb7JoigwoaERz765vikJxidBmGPMbjOf50HNP2PxRqOE3bhc0xOZhSmFV_3BEn8JNsxl_GFgnMAs5qRrshwJEKBtFcluD5xvdKkGNwyT1L5J7OWxS0UDM22heF_uRJuusIjBG__ALaHV1XdHgxrBE-p7wSLUo76dGrA2rnOBw3PNjUBkvgKjsqs_nqVyWyFVjJpNQkh7uDIS7a223l6ZJNA.jpg"
+      alt="Profile"
+      class="profile-img"
+    />
+
+    <h1>D3ePray's Socials</h1>
+
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/d3epray/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/d3epray" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://t.me/d3epray" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://www.rooter.gg/profile/2007775998" target="_blank" title="Rooter"><i class="fas fa-gamepad"></i></a>
     </div>
 
-    <div class="bill-container" id="bill">
-        <div class="bill-header">Rent Bill Receipt</div>
-        <div class="bill-content">
-            <div class="tenant-info">
-                <p><strong>Tenant Name:</strong> <span id="bill-user" style="color: #4a6baf;"></span></p>
-                <p><strong>Phone:</strong> <span id="bill-phone" style="color: #4a6baf;"></span></p>
-            </div>
-            <div class="date-month-container">
-                <p><strong>Date:</strong> <span id="bill-date"></span></p>
-                <p><strong>Month:</strong> <span id="bill-month" style="color: #4a6baf;"></span></p>
-            </div>
-            <hr style="border-top: 1px dashed #cccccc; margin: 10px 0;">
-            <table class="bill-table">
-                <tr>
-                    <th>Particular</th>
-                    <th>Amount (₹)</th>
-                </tr>
-                <tr>
-                    <td>House Rent</td>
-                    <td id="bill-houseRent" style="color: #388e3c;"></td>
-                </tr>
-                <tr>
-                    <td>Electric Bill</td>
-                    <td id="bill-electricBill" style="color: #388e3c;"></td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong id="bill-total" style="color: #4a6baf;"></strong></td>
-                </tr>
-                <tr class="extra-row"></tr>
-                <tr id="extraRow" style="display: none;">
-                    <td id="extraLabel"></td>
-                    <td id="extraAmount"></td>
-                </tr>
-            </table>
-            <div class="payment-method">
-                <p><strong>Payment Method:</strong> <span id="bill-paymentMethod"></span></p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="button-container">
-        <button onclick="downloadBill()" id="downloadButton">Download Bill</button>
-        <button onclick="showForm()" id="newBillButton">Generate New Bill</button>
-    </div>
-    
-    <script>
-        function formatIndianCurrency(amount) {
-            return new Intl.NumberFormat('en-IN', { 
-                style: 'currency', 
-                currency: 'INR',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            }).format(amount);
-        }
+    <div class="footer">Clik to connect me...
+  </div>
 
-        function generateBill() {
-            let user = document.getElementById('user').value;
-            let phone = document.getElementById('phone').value;
-            let date = document.getElementById('date').value;
-            let houseRent = parseFloat(document.getElementById('houseRent').value) || 0;
-            let lastMeter = parseFloat(document.getElementById('lastMeter').value) || 0;
-            let currentMeter = parseFloat(document.getElementById('currentMeter').value) || 0;
-            let paymentMethod = document.getElementById('paymentMethod').value;
-            let electricBill = (currentMeter - lastMeter) * 9;
-            electricBill = electricBill > 0 ? electricBill : 0;
-            let total = houseRent + electricBill;
-            
-            let paymentType = document.getElementById('paymentType').value;
-            let paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
-            
-            if (user && phone && date && (houseRent || electricBill) && paymentMethod) {
-                let billDate = new Date(date);
-                document.getElementById('bill-user').innerText = user;
-                document.getElementById('bill-phone').innerText = phone;
-                document.getElementById('bill-date').innerText = billDate.toLocaleDateString();
-                document.getElementById('bill-month').innerText = billDate.toLocaleString('default', { month: 'long' });
-                document.getElementById('bill-houseRent').innerText = formatIndianCurrency(houseRent);
-                document.getElementById('bill-electricBill').innerText = formatIndianCurrency(electricBill);
-                document.getElementById('bill-total').innerText = formatIndianCurrency(total);
-                document.getElementById('bill-paymentMethod').innerText = paymentMethod;
-                
-                let extraRow = document.getElementById('extraRow');
-                let extraLabel = document.getElementById('extraLabel');
-                let extraAmount = document.getElementById('extraAmount');
-                
-                if (paymentType !== "None" && paymentAmount > 0) {
-                    extraRow.style.display = 'table-row';
-                    extraLabel.innerText = paymentType === "Advance" ? "Advance" : "Outstanding";
-                    
-                    if (paymentType === "Advance") {
-                        extraAmount.className = "advance";
-                    } else {
-                        extraAmount.className = "outstanding";
-                    }
-                    extraAmount.innerText = formatIndianCurrency(paymentAmount);
-                } else {
-                    extraRow.style.display = 'none';
-                }
-                
-                document.getElementById('formContainer').style.display = 'none';
-                document.getElementById('bill').style.display = 'block';
-                document.getElementById('downloadButton').style.display = 'inline-block';
-                document.getElementById('newBillButton').style.display = 'inline-block';
-            } else {
-                alert("Please fill all required fields including payment method");
-            }
-        }
-
-        function showForm() {
-            document.getElementById('formContainer').style.display = 'block';
-            document.getElementById('bill').style.display = 'none';
-            document.getElementById('downloadButton').style.display = 'none';
-            document.getElementById('newBillButton').style.display = 'none';
-            
-            document.getElementById('user').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('date').value = '';
-            document.getElementById('houseRent').value = '';
-            document.getElementById('lastMeter').value = '';
-            document.getElementById('currentMeter').value = '';
-            document.getElementById('paymentType').value = 'None';
-            document.getElementById('paymentAmount').value = '';
-            document.getElementById('paymentMethod').value = '';
-        }
-
-        function downloadBill() {
-            const billElement = document.getElementById('bill');
-            const originalDisplay = billElement.style.display;
-            billElement.style.display = 'block';
-            
-            html2canvas(billElement, {
-                scale: 3,
-                logging: false,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: null,
-                windowWidth: billElement.scrollWidth,
-                windowHeight: billElement.scrollHeight
-            }).then(canvas => {
-                billElement.style.display = originalDisplay;
-                const link = document.createElement('a');
-                const monthName = document.getElementById('bill-month').innerText;
-                const fileName = `${monthName}.png`;
-                
-                link.download = fileName;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            }).catch(err => {
-                console.error('Error generating image:', err);
-                alert('Error generating bill image. Please try again.');
-                billElement.style.display = originalDisplay;
-            });
-        }
-    </script>
 </body>
 </html>

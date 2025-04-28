@@ -25,22 +25,31 @@
       background-size: cover;
     }
 
-    .container {
-      background: rgba(0, 0, 0, 0.5); /* semi-dark overlay */
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      padding: 30px 20px;
-      text-align: center;
-      width: 100%;
-      max-width: 380px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+.container {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff; /* Soft Neon */
+  animation: fadeIn 1s ease;
+  border: 1px solid rgba(0, 255, 255, 0.5); /* Slight neon border */
+}
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes neonGlow {
+      0% {
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+      }
+      100% {
+        box-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff, 0 0 70px #00ffff;
+      }
     }
 
     .profile-img {
@@ -93,10 +102,31 @@
       box-shadow: 0 0 24px rgba(255, 255, 255, 0.4);
     }
 
+    /* Donation Button Style */
+    .donation-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .donation-button:hover {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
     .footer {
       font-size: 0.85em;
       color: #dddddd;
-      margin-top: 15px;
+      margin-top: 20px;
     }
 
     /* Mobile responsive */
@@ -119,6 +149,11 @@
         height: 50px;
         font-size: 1.3em;
       }
+
+      .donation-button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+      }
     }
   </style>
 </head>
@@ -140,7 +175,10 @@
       <a href="https://www.rooter.gg/profile/2007775998" target="_blank" title="Rooter"><i class="fas fa-gamepad"></i></a>
     </div>
 
-    <div class="footer">Click to connect me...</div>
+    <!-- Donation Button -->
+    <a href="https://www.rooter.gg/donationPage?id=2007775998" class="donation-button" target="_blank">
+      Donate ❤️
+    </a>
   </div>
 
 </body>

@@ -81,26 +81,27 @@
       margin-bottom: 20px;
     }
 
-    .social-buttons a {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #00c6ff, #0072ff);
-      color: #ffffff;
-      font-size: 1.5em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-      box-shadow: 0 0 18px rgba(255, 255, 255, 0.3);
-    }
+.social-buttons a {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a00f4, #a100ff); /* Deep purple gradient */
+  color: #ffffff;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+  box-shadow: 0 0 12px rgba(161, 0, 255, 0.5);
+  animation: pulseGlow 2s infinite alternate;
+}
 
-    .social-buttons a:hover {
-      transform: translateY(-6px) scale(1.1);
-      background: linear-gradient(145deg, #8e2de2, #4a00e0);
-      box-shadow: 0 0 24px rgba(255, 255, 255, 0.4);
-    }
+.social-buttons a:hover {
+  transform: translateY(-6px) scale(1.1);
+  background: linear-gradient(135deg, #9d00ff, #4c00c2); /* Brighter hover color */
+  box-shadow: 0 0 20px rgba(173, 0, 255, 0.8), 0 0 30px rgba(173, 0, 255, 0.6);
+}
 
     /* Donation Button Style */
     .donation-button {
@@ -155,6 +156,14 @@
         font-size: 0.95em;
       }
     }
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(161, 0, 255, 0.4), 0 0 20px rgba(161, 0, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(161, 0, 255, 0.7), 0 0 30px rgba(161, 0, 255, 0.5);
+  }
+}
   </style>
 </head>
 <body>
@@ -169,10 +178,12 @@
     <h1>D3ePray's Socials</h1>
 
     <div class="social-buttons">
-      <a href="https://www.instagram.com/d3epray/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/d3epray" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://t.me/d3epray" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://www.rooter.gg/profile/2007775998" target="_blank" title="Rooter"><i class="fas fa-gamepad"></i></a>
+       <a href="https://www.instagram.com/d3epray/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.facebook.com/d3epray" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://t.me/d3epray" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+<a href="https://www.rooter.gg/profile/2007775998" target="_blank" title="Rooter">
+  <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/rooter.png" alt="Rooter" style="width: 50px; height: 50px; object-fit: contain;" />
+</a>
     </div>
 
     <!-- Donation Button -->

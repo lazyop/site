@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
   <style>
+    /* Existing styles unchanged */
     * {
       margin: 0;
       padding: 0;
@@ -25,31 +26,28 @@
       background-size: cover;
     }
 
-.container {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 30px 20px;
-  text-align: center;
-  width: 100%;
-  max-width: 350px;
-  box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff; /* Soft Neon */
-  animation: fadeIn 1s ease;
-  border: 1px solid rgba(0, 255, 255, 0.5); /* Slight neon border */
-}
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 350px;
+      box-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+      animation: fadeIn 1s ease;
+      border: 1px solid rgba(0, 255, 255, 0.5);
+    }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes neonGlow {
-      0% {
-        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
-      }
-      100% {
-        box-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff, 0 0 70px #00ffff;
-      }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #ffffff;
     }
 
     .profile-img {
@@ -67,12 +65,6 @@
       transform: scale(1.05);
     }
 
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      color: #ffffff;
-    }
-
     .social-buttons {
       display: flex;
       justify-content: center;
@@ -81,32 +73,37 @@
       margin-bottom: 20px;
     }
 
-.social-buttons a {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6a00f4, #a100ff); /* Deep purple gradient */
-  color: #ffffff;
-  font-size: 1.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
-  box-shadow: 0 0 12px rgba(161, 0, 255, 0.5);
-  animation: pulseGlow 2s infinite alternate;
-}
+    .social-buttons a {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6a00f4, #a100ff);
+      color: #ffffff;
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+      box-shadow: 0 0 12px rgba(161, 0, 255, 0.5);
+      animation: pulseGlow 2s infinite alternate;
+    }
 
-.social-buttons a:hover {
-  transform: translateY(-6px) scale(1.1);
-  background: linear-gradient(135deg, #9d00ff, #4c00c2); /* Brighter hover color */
-  box-shadow: 0 0 20px rgba(173, 0, 255, 0.8), 0 0 30px rgba(173, 0, 255, 0.6);
-}
+    .social-buttons a:hover {
+      transform: translateY(-6px) scale(1.1);
+      background: linear-gradient(135deg, #9d00ff, #4c00c2);
+      box-shadow: 0 0 20px rgba(173, 0, 255, 0.8), 0 0 30px rgba(173, 0, 255, 0.6);
+    }
 
-    /* Donation Button Style */
-    .donation-button {
-      display: inline-block;
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
       margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .donation-button {
       padding: 12px 25px;
       background: linear-gradient(135deg, #ff416c, #ff4b2b);
       color: white;
@@ -124,13 +121,27 @@
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
     }
 
-    .footer {
-      font-size: 0.85em;
-      color: #dddddd;
-      margin-top: 20px;
+    .upi-button {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #ffffff, #00bfff);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
-    /* Mobile responsive */
+    .upi-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+    }
+
+    .upi-logo {
+      height: 28px;
+      width: auto;
+    }
+
     @media (max-width: 480px) {
       .container {
         padding: 25px 15px;
@@ -151,19 +162,61 @@
         font-size: 1.3em;
       }
 
-      .donation-button {
+      .donation-button, .upi-button {
         padding: 10px 20px;
         font-size: 0.95em;
       }
+
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
     }
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 10px rgba(161, 0, 255, 0.4), 0 0 20px rgba(161, 0, 255, 0.3);
-  }
-  100% {
-    box-shadow: 0 0 20px rgba(161, 0, 255, 0.7), 0 0 30px rgba(161, 0, 255, 0.5);
-  }
-}
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 10px rgba(161, 0, 255, 0.4), 0 0 20px rgba(161, 0, 255, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(161, 0, 255, 0.7), 0 0 30px rgba(161, 0, 255, 0.5);
+      }
+    }
+
+    /* MODAL STYLE */
+    .upi-modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .upi-modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #00ffff;
+    }
   </style>
 </head>
 <body>
@@ -178,19 +231,45 @@
     <h1>D3ePray's Socials</h1>
 
     <div class="social-buttons">
-       <a href="https://www.instagram.com/d3epray/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.facebook.com/d3epray" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://t.me/d3epray" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-<a href="https://www.rooter.gg/profile/2007775998" target="_blank" title="Rooter">
-  <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/rooter.png" alt="Rooter" style="width: 50px; height: 50px; object-fit: contain;" />
-</a>
+      <a href="https://www.instagram.com/d3epray/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/d3epray" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://t.me/d3epray" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://www.rooter.gg/profile/2007775998" target="_blank" title="Rooter">
+        <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/rooter.png" alt="Rooter" style="width: 50px; height: 50px; object-fit: contain;" />
+      </a>
     </div>
 
-    <!-- Donation Button -->
-    <a href="https://www.rooter.gg/donationPage?id=2007775998" class="donation-button" target="_blank">
-      Donate ❤️
-    </a>
+    <div class="action-buttons">
+      <a href="https://www.rooter.gg/donationPage?id=2007775998" class="donation-button" target="_blank">Donate ❤️</a>
+      <div class="upi-button" onclick="openUPI()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/UPI_logo.svg/1200px-UPI_logo.svg.png" alt="UPI" class="upi-logo" />
+      </div>
+    </div>
   </div>
+
+  <!-- MODAL HTML -->
+  <div class="upi-modal" id="upiModal">
+    <span class="close-btn" onclick="closeUPI()">×</span>
+    <img src="https://raw.githubusercontent.com/lazyop/site/refs/heads/main/UPI.png" alt="UPI QR" />
+  </div>
+
+  <script>
+    function openUPI() {
+      document.getElementById("upiModal").style.display = "flex";
+    }
+
+    function closeUPI() {
+      document.getElementById("upiModal").style.display = "none";
+    }
+
+    // Optional: close on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById("upiModal");
+      if (event.target === modal) {
+        closeUPI();
+      }
+    };
+  </script>
 
 </body>
 </html>
